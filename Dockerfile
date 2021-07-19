@@ -38,7 +38,7 @@ RUN sed -i "s/RABBIT_MQ_USERNAME/${RABBIT_MQ_USERNAME}/g" /etc/rabbitmq/definiti
 RUN sed -i "s/RABBIT_MQ_VIRTUAL_HOST/${RABBIT_MQ_VIRTUAL_HOST}/g" /etc/rabbitmq/definitions.json
 
 # Definition queue policies and set it on /etc/rabbitmq/definitions.json
-RUN python /etc/rabbitmq/rmq_policis_definitions.py ${RABBIT_MQ_NODES}
+RUN python /etc/rabbitmq/rmq_policis_definitions.py ${RABBIT_MQ_NODES} ${RABBIT_MQ_VIRTUAL_HOST}
 
 # Definition cluster rules on /etc/rabbitmq/rabbitmq.conf
 RUN python /etc/rabbitmq/rmq_cluster_definitions.py ${RABBIT_MQ_NODES}

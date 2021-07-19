@@ -4,9 +4,10 @@ import fileinput
 
 ha_policies  ="["
 rabbit_nodes = int(sys.argv[1])
+virtual_host = sys.argv[2]
 
 if rabbit_nodes > 1:
-    ha_policies+="{\"vhost\":\"/worker-pull\",\"name\":\"ha-mode\",\"pattern\":\".*\",\"apply-to\":\"queues\",\"definition\":{\"ha-mode\":\"all\",\"ha-sync-mode\":\"automatic\"},\"priority\":1}"
+    ha_policies+="{\"vhost\":\"/"+virtual_host+"\",\"name\":\"ha-mode\",\"pattern\":\".*\",\"apply-to\":\"queues\",\"definition\":{\"ha-mode\":\"all\",\"ha-sync-mode\":\"automatic\"},\"priority\":1}"
 
 ha_policies+="]"
 
