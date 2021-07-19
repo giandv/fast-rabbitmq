@@ -25,3 +25,5 @@ Definition in docker compose:
 			- <network_name>
 				
 In defining the docker-compose it is important to explain the RABBIT_MQ_NODES parameter. This specifies the number of nodes of RabbitMQ, in a docker environment we recommend having only one node, while in a kubernetes environment this number is according to your configuration, so any number greater than 1 enables peer_discovery [https://www.rabbitmq.com/cluster-formation.html]. The cluster_formation definition is present in the rabbit.conf file.
+All peer discovery mechanisms assume that newly joining nodes will be able to contact their peers in the cluster and authenticate with them successfully.
+There are various modes of discovery in this project we preferred to use the one based on the [Config file](https://www.rabbitmq.com/cluster-formation.html#peer-discovery-classic-config) (rabbit.conf).
