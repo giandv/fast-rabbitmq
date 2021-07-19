@@ -9,19 +9,19 @@ This project can be easily integrated into your docker-compose network in the fo
 
 Definition in docker compose:
 
-  fast-rabbitmq:
-	image: fast-rabbitmq
-	container_name: 'fast-rabbitmq'
-	build:
-		context: fast-rabbitmq
-		args:
-			- RABBIT_MQ_NODES=<NUMBER_NODES>
-			- RABBIT_MQ_PASSWORD=<ADMINISTRATOR_PASSWORD>
-			- RABBIT_MQ_USERNAME=<ADMINISTRATOR_USERNAME>
-			- RABBIT_MQ_VIRTUAL_HOST=<NAME_VUIRTUAL_HOST>
-	ports:
-		- 15672:15672
-	networks:
-		- <network_name>
+	  fast-rabbitmq:
+		image: fast-rabbitmq
+		container_name: 'fast-rabbitmq'
+		build:
+			context: fast-rabbitmq
+			args:
+				- RABBIT_MQ_NODES=<NUMBER_NODES>
+				- RABBIT_MQ_PASSWORD=<ADMINISTRATOR_PASSWORD>
+				- RABBIT_MQ_USERNAME=<ADMINISTRATOR_USERNAME>
+				- RABBIT_MQ_VIRTUAL_HOST=<NAME_VUIRTUAL_HOST>
+		ports:
+			- 15672:15672
+		networks:
+			- <network_name>
 				
 In defining the docker-compose it is important to explain the RABBIT_MQ_NODES parameter. This specifies the number of nodes of RabbitMQ, in a docker environment we recommend having only one node, while in a kubernetes environment this number is according to your configuration, so any number greater than 1 enables peer_discovery [https://www. rabbitmq.com/cluster-formation.html]. The cluster_formation definition is present in the rabbit.conf file.
